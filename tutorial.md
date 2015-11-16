@@ -2,7 +2,7 @@
 In this tutorial, we are going to refactor the bootstrap thumbnail component into React components.
 
 ## Wire Frame
-Here is a basic picture of what we want our end result to be.  We are going to make two thumbnails that show they type of tutorial, an image, and a button with a number of tutorials for that related subject.  From the picture, can you guess how many React components there are? [](./overview.png)
+Here is a basic picture of what we want our end result to be.  We are going to make two thumbnails that show they type of tutorial, an image, and a button with a number of tutorials for that related subject.  From the picture, can you guess how many React components there are? [wireframe](./overview.png)
 
 ## Setup
 First, you may want to install a React package for your text-editor before we get started.  This will help with syntax highlighting when we start writing JSX files.
@@ -181,6 +181,7 @@ module.exports = React.createClass({
 });
 ```
 Now, we have seen our first example of JSX and passing through information into a component.  Looking at this completed component, three things stand out:
+
 1. className
 1. {this.props.title}
 1. {this.props.number}
