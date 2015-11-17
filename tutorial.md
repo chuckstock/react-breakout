@@ -1,5 +1,5 @@
 ## Background
-In this tutorial, we are going to refactor the bootstrap thumbnail component into React components.
+In this tutorial, we are going to refactor the bootstrap thumbnail component into React components.  Here is a link the completed [github repo](https://github.com/blackstc/react-thumbnail-homework).  I would recommend doing the tutorial first and visiting this at the end if you have any problems.
 
 ## Wire Frame
 Here is a basic picture of what we want our end result to be.  We are going to make two thumbnails that show they type of tutorial, an image, and a button with a number of tutorials for that related subject.  From the picture, can you guess how many React components there are? ![wireframe](./img/overview.png)
