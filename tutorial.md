@@ -2,7 +2,7 @@
 In this tutorial, we are going to refactor the bootstrap thumbnail component into React components.  Here is a link the completed [github repo](https://github.com/blackstc/react-thumbnail-homework).  I would recommend doing the tutorial first and visiting this at the end if you have any problems.
 
 ## Wire Frame
-Here is a basic picture of what we want our end result to be.  We are going to make two thumbnails that show they type of tutorial, an image, and a button with a number of tutorials for that related subject.  From the picture, can you guess how many React components there are? ![wireframe](./img/overview.png)
+Here is a basic picture of what we want our end result to be.  We are going to make two thumbnails that show the type of tutorial, an image, and a button with a number of tutorials for that related subject.  From the picture, can you guess how many React components there are? ![wireframe](./img/overview.png)
 
 ## Setup
 First, you may want to install a React package for your text-editor before we get started.  This will help with syntax highlighting when we start writing JSX files.
@@ -55,7 +55,7 @@ $ npm i
 ```
 
 ### Gulp
-React components are written in JSX.  JSX gives you the ability to write html within javascript files.  This is the life-blood of building React components, however, the JSX files need to be compiled into javascript, therefore, the easiest way to do this is with a gulp build process.  This gulp file will not only compile from JSX to javascript, but will order the files properly and send all the code to a single file, main.js.
+React components are written in JSX.  JSX gives you the ability to write HTML within javascript files.  This is the life-blood of building React components, however, the JSX files need to be compiled into javascript. The easiest way to do this is with the gulp build process.  This gulp file will not only compile from JSX to javascript, but will order the files properly and send all the code to a single file, main.js.
 
 ```javascript
 var gulp = require('gulp');
@@ -90,7 +90,7 @@ gulp.task('default', function() {
 
 ```
 
-Run gulp from the console to start your compiler.  Leave the gulp file running and it will automatically update with your main.js whenever you make changes.
+Run gulp from the console to start your compiler.  Leave the gulp file running and it will automatically update with your main.js whenever changes are made.
 
 
 ### Index
@@ -115,13 +115,13 @@ Run gulp from the console to start your compiler.  Leave the gulp file running a
 ### App.jsx
 The app jsx is the the platform to launch your JSX files.  For now, we will use it to attach elements to the DOM and as a place to old our sample data.
 
-First we need to require in React and additional components that we want to render. Secondly we will require in thumbnail-list, this is a component we will build later.
+First we need to require in React and additional components that we want to render. Secondly we will require a thumbnail-list, this is a component we will build later.
 ```javascript
 var React = require('react');
 var ThumbnailList = require('./thumbnail-list');
 ```
 
-Next lets add the sample data that we will use for our thumbnails.
+Next let's add the sample data that we will use for our thumbnails.
 ```javascript
 var options = {
   thumbnailData: [
@@ -154,7 +154,7 @@ React.render(element, document.querySelector('.target'));
 
 ### Badge
 
-When looking at our thumbnails the first component we are going to want to make is the Badge.  The badge will act as a button on our thumbnail that will have text and show the number of tutorials for that specific subject.  So lets get to it...
+When looking at our thumbnails the first component we are going to make is the Badge.  The badge will act as a button on our thumbnail that will have text and show the number of tutorials for that specific subject.  So lets get to it...
 
 First, we will setup, what will be our basic boilerplate for starting every component in React.
 
@@ -166,7 +166,7 @@ module.exports = React.createClass({
   }
 });
 ```
-You will notice that the entire component will be wrapped in a 'module.exports'.  This will make it much easier to require in this file later, and then simply paste the component where it is needed.  Don't worry if this is confusing, we will go into more detail about this throughout the tutorial.
+You will notice that the entire component will be wrapped in a 'module.exports'.  This will make it much easier to import this file later, and then simply paste the component where it is needed.  Don't worry if this is confusing, we will go into more detail about this throughout the tutorial.
 
 Next, lets add our code to the render function.
 ```javascript
