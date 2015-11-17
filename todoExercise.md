@@ -22,33 +22,11 @@ npm install
 gulp
 ```
 
-# Exploring app.jsx
-  Dependencies
-  ```js
-  var React = require('react');
-```
-Create a new React Class
-```js
-var Hello = React.createClass({
-  render: function() {
-    return <h1 className="red">
-      Hello!
-    </h1>
-  }
-});
-```
-Instantiate Element
-```js
-var element = React.createElement(Hello, {});
-```
-Render element to DOM
-```js
-React.render(element, document.querySelector('.container'));
-```
+# Sign up for [Firebase](https://www.firebase.com/)
+Once you create an account you will have an app dashboard where you can view connected apps.
 
-# Creating Components
-## ToDo app
-```js
-/* ToDo App] */
- var TodoApp = React.createClass({ ... });
-```
+# Exploring app.jsx
+  We need to require both React, [Firebase](https://www.firebase.com/), and [ReactFire](https://www.firebase.com/docs/web/libraries/react/).
+
+# createClass()
+We will pass an object to the createClass method. One of the most important keys to include in the object is render, which we will create a function as its value. The render function will contain a combination of basic HTML and other components we will build in React.
