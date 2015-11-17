@@ -187,3 +187,123 @@ Now, we have seen our first example of JSX and passing through information into 
 1. {this.props.number}
   1. When writing JSX, we call React methods by wrapping them in {}
   1. React components use properties on their JSX elements to pass data through to each component.  Components can then call that data using 'this.props'.  We'll see more of this in our next component.
+
+
+## Thumbnail
+Now lets create a single thumbnail component using the bootstrap thumbnail html as our foundation.  Again, first lets start with our basic boilerplate; however, this time we will also require in our Badge component that we just created so that we can use it in our thumbnail componenet;
+
+```javascript
+var React = require('react');
+var Badge = require('./badge');
+
+module.exports = React.createClass({
+  render: function() {
+  }
+});
+```
+
+Now we'll add the basic bootstrap outline for creating a thumbnail component.
+
+```javascript
+var React = require('react');
+var Badge = require('./badge');
+
+module.exports = React.createClass({
+  render: function() {
+    return <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="..." alt="...">
+        <div class="caption">
+          <h3>Thumbnail label</h3>
+          <p>...</p>
+          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        </div>
+      </div>
+    </div>
+  }
+});
+```
+
+Similar to the Badge component, lets first go through and add our {this.props} to items we want to by dynamic.
+
+```javascript
+var React = require('react');
+var Badge = require('./badge');
+
+module.exports = React.createClass({
+  render: function() {
+    return <div className="col-sm-6 col-md-4">
+      <div className="thumbnail">
+        <img src={this.props.imageUrl} />
+        <div className="caption">
+          <h3>{this.props.header}</h3>
+          <p>{this.props.description}</p>
+          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        </div>
+      </div>
+    </div>
+  }
+});
+```
+
+Now lets replace the button with our badge component that we just created.  Be sure to analyze how the Badge component is added.  How are we passing data through the Badge component?
+
+```javascript
+var React = require('react');
+var Badge = require('./badge');
+
+module.exports = React.createClass({
+  render: function() {
+    return <div className="col-sm-6 col-md-4">
+      <div className="thumbnail">
+        <img src={this.props.imageUrl} />
+        <div className="caption">
+          <h3>{this.props.header}</h3>
+          <p>{this.props.description}</p>
+          <p>
+            <Badge title={this.props.title} number={this.props.number}/>
+          </p>
+        </div>
+      </div>
+    </div>
+  }
+});
+```
+
+## Thumbnail List
+
+This final part will definitely be the most complicated component we have made thus far, but I will try to explain as best as possible, however, this will probably just take some time and repetition to fully understand what is happening.
+
+```javascript
+var React = require('React');
+var Thumbnail = require('./thumbnail');
+
+module.exports = React.createClass({
+  render: function() {
+    var list = this.props.thumbnailData.map(function(thumbnailProps) {
+      return <Thumbnail {...thumbnailProps} />
+    });
+
+    return <div>
+      {list}
+    </div>
+  }
+});
+```
+
+Lets talk about what is weird here:
+
+1. var list
+  1. First, we'll see we are using some functional programming by calling map on 'thumbnailData'.  You'll notice that we pass thumbNail data into this component from App.jsx
+  1. Second, we're using map because we are passing in data for two separate thumbnails, remember our wireframe from above? In this map function we want to return two separate thumbnail components.
+  1. Third, within the Thumbnail component we see '{...thumbnailProps}', this is called spread attributes, and the '...' is called  a spread operator
+    1. the spread operator actually exists in ES6 on arrays, and JSX is trying to take advantage of the syntax
+    1. but this spread attribute  is used to pass through all the data in a more concise matter instead of passing them through, one attribute at a time.
+1. Finally the return at the bottom is simply returning the list of Thumbnail components we just created in a list.
+
+## Conclusion
+So if we run:
+```sh
+$ gulp
+```
+And now we open our index.html, we should see our two thumbnail components on the page.
