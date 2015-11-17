@@ -47,7 +47,7 @@ React.render(element, document.querySelector('.container'));
 ```
 
 # Creating Components
-  ## ToDo app
+## ToDo app
 ```js
 /* ToDo App] */
  var TodoApp = React.createClass({ ... });
