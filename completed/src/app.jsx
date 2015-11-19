@@ -3,7 +3,7 @@ var ReactFire = require('reactfire');
 var Firebase = require('firebase');
 var Header = require('./header');
 var List = require('./list');
-var rootUrl = 'https://blistering-torch-4253.firebaseio.com/';
+var rootUrl = 'https://todo-list-react.firebaseio.com/';
 
 var App = React.createClass({
   mixins: [ ReactFire ],
